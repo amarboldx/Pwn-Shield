@@ -6,14 +6,12 @@ import org.springframework.web.client.RestClient;
 
 @Service
 public class HibpClientService {
-    private final RestClient restClient;
 
-    public HibpClientService() {
-        // Initialize the modern Spring 6 / Boot 3+ fluent REST client
-        this.restClient = RestClient.builder()
-                .baseUrl("https://api.pwnedpasswords.com")
-                .defaultHeader("User-Agent", "Pwn-Shield-App-Development")
-                .build();
+    private final RestClient hibpRestClient;
+
+    // Spring Boot automatically finds the 'hibpRestClient' Bean we just configured and injects it here
+    public HibpClientService(RestClient hibpRestClient) {
+        this.hibpRestClient = hibpRestClient;
     }
 
     public String getPasswordHashRange(String prefix) {
@@ -21,9 +19,10 @@ public class HibpClientService {
             throw new IllegalArgumentException("Prefix must be exactly 5 characters long.");
         }
 
-        return this.restClient.get()
+        return this.hibpRestClient.get()
                 .uri("/range/{prefix}", prefix)
                 .retrieve()
                 .body(String.class);
     }
 }
+
