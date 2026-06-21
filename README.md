@@ -100,7 +100,7 @@ The server will boot inside an embedded Tomcat instance on
 http://localhost:8080.
 ```
 
-###2. Spin up the Client Interface
+### 2. Spin up the Client Interface
 Open a second terminal sitting in your root directory:
 
 ```bash
