@@ -76,7 +76,7 @@ pwnguard/
 │
 └── .gitignore                # Global monorepo artifact exclusion rules
 
-
+```
 ## 🚀 Getting Started (Local Development)
 
 ### Prerequisites
@@ -87,7 +87,11 @@ pwnguard/
 ```bash
 cd backend
 ./mvnw spring-boot:run
-The server will boot inside an embedded Tomcat instance on http://localhost:8080.
+```
+The server will boot inside an embedded Tomcat instance on 
+```bash
+http://localhost:8080.
+```
 
 ###2. Spin up the Client Interface
 Open a second terminal sitting in your root directory:
@@ -96,5 +100,9 @@ Open a second terminal sitting in your root directory:
 cd frontend
 npm install
 npm run dev
-
+```
+Vite will instantly expose the UI at
+```bash
+http://localhost:5173.
+```
 Vite will instantly expose the UI at http://localhost:5173.
