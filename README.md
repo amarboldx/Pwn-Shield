@@ -15,9 +15,9 @@ PwnGuard is a modern, client-side-heavy security ecosystem built on a single unc
 ## 🗺️ Ecosystem Roadmap & Progress Tracker
 ```mermaid
 graph LR
-    P1["**PHASE 1: THE SHIELD**<br/>(Vulnerability Engine)<br/>📦 COMPLETED"]
-    P2["**PHASE 2: THE VAULT**<br/>(Zero-Knowledge Manager)<br/>⚙️ IN PROGRESS"]
-    P3["**PHASE 3: THE POCKET**<br/>(Native Mobile Clients)<br/>⏳ PLANNED"]
+    P1["<b>PHASE 1: THE SHIELD</b><br/>(Vulnerability Engine)<br/>📦 COMPLETED"]
+    P2["<b>PHASE 2: THE VAULT</b><br/>(Zero-Knowledge Manager)<br/>⚙️ IN PROGRESS"]
+    P3["<b>PHASE 3: THE POCKET</b><br/>(Native Mobile Clients)<br/>⏳ PLANNED"]
 
     P1 --> P2 --> P3
 
@@ -112,4 +112,3 @@ Vite will instantly expose the UI at
 ```bash
 http://localhost:5173.
 ```
-Vite will instantly expose the UI at http://localhost:5173.
