@@ -13,12 +13,19 @@ PwnGuard is a modern, client-side-heavy security ecosystem built on a single unc
 ---
 
 ## 🗺️ Ecosystem Roadmap & Progress Tracker
+```mermaid
+graph LR
+    P1["**PHASE 1: THE SHIELD**<br/>(Vulnerability Engine)<br/>📦 COMPLETED"]
+    P2["**PHASE 2: THE VAULT**<br/>(Zero-Knowledge Manager)<br/>⚙️ IN PROGRESS"]
+    P3["**PHASE 3: THE POCKET**<br/>(Native Mobile Clients)<br/>⏳ PLANNED"]
 
-┌─────────────────────────┐      ┌─────────────────────────┐      ┌─────────────────────────┐
-│   PHASE 1: THE SHIELD   │ ───► │   PHASE 2: THE VAULT    │ ───► │   PHASE 3: THE POCKET   │
-│  (Vulnerability Engine) │      │ (Zero-Knowledge Manager)│      │  (Native Mobile Clients)│
-│       [ COMPLETED ]     │      │     [ IN PROGRESS ]     │      │       [ PLANNED ]       │
-└─────────────────────────┘      └─────────────────────────┘      └─────────────────────────┘
+    P1 --> P2 --> P3
+
+    style P1 fill:#d4edda,stroke:#28a745,stroke-width:2px
+    style P2 fill:#fff3cd,stroke:#ffc107,stroke-width:2px
+    style P3 fill:#e2e3e5,stroke:#6c757d,stroke-width:2px
+```
+
 
 ### Phase 1: The Vulnerability Engine `[🟢 COMPLETED]`
 * [x] **Stateless Security Broker:** Spring Boot 4.1 backend configured with zero session persistence.
