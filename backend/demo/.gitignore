@@ -31,3 +31,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
+# --- PWNGUARD SECRETS QUARANTINE ---
+.env.properties
+.env.*
+*.env
+!.env.example
