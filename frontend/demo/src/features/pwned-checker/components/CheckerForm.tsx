@@ -5,7 +5,7 @@ export default function CheckerForm() {
     const [inputPassword, setInputPassword] = useState('');
     const { checkPassword, loading, breachCount, error } = usePwnedCheck();
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = (e: React.SubmitEvent) => {
         e.preventDefault();
         checkPassword(inputPassword);
     };
@@ -24,7 +24,7 @@ export default function CheckerForm() {
                 Instant Vulnerability Scan
             </h2>
             <p style={{ color: '#64748b', fontSize: '13px', margin: '0 0 20px 0', lineHeight: '1.4' }}>
-                Verify if a credential has appeared in public leaks. Using $k$-anonymity, your plain text password never leaves this device.
+                Verify if a credential has appeared in public leaks. Using k-anonymity, your plain text password never leaves this device.
             </p>
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%' }}>

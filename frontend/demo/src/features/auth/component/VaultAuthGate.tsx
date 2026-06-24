@@ -10,10 +10,10 @@ export const VaultAuthGate: React.FC = () => {
   const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [formError, setFormError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
     setFormError(null);
-
+    
     if (!email || !masterPassword) {
       setFormError('Please fill out all required fields.');
       return;
