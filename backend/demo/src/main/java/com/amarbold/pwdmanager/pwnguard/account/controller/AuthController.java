@@ -84,20 +84,12 @@ public class AuthController {
             return ResponseEntity.badRequest().body("Identity overlap registered.");
         }
 
-        // Generate a 64-character true cryptographically random hex salt
-        SecureRandom random = new SecureRandom();
-        byte[] saltBytes = new byte[32];
-        random.nextBytes(saltBytes);
-        String cryptoSalt = HexFormat.of().formatHex(saltBytes);
-
-        // Bcrypt hash the incoming "Key A"
+        String cryptoSalt = req.cryptoSalt();
         String bcryptedKeyA = passwordEncoder.encode(req.authKeyHex());
 
         UserAccount newUser = new UserAccount(cleanEmail, bcryptedKeyA, cryptoSalt);
         userRepository.save(newUser);
 
-        // Provision an empty Base64 vault row tied to this user's primary key
-        // (A Base64 string of an AES-GCM encrypted empty JSON array "[]")
         EncryptedVault emptyVault = new EncryptedVault(newUser, "EMPTY_VAULT_INITIALIZED");
         vaultRepository.save(emptyVault);
 

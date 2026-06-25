@@ -1,3 +1,3 @@
 package com.amarbold.pwdmanager.pwnguard.account.dto;
 
-public record AuthHandshakeRequest(String email, String authKeyHex) {}
+public record AuthHandshakeRequest(String email, String authKeyHex, String cryptoSalt) {}
