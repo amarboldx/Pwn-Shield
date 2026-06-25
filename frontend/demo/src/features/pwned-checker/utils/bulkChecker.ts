@@ -1,4 +1,5 @@
 import { hashToSha1 } from '../../../core/crypto/sha1';
+import { api } from '../../../core/api/axiosInstance';
 
 export interface ParsedCredential {
     id: string;
@@ -39,9 +40,11 @@ export async function processBulkCheck(
             const suffix = hash.substring(5);
 
             try {
-                const res = await fetch(`http://localhost:8080/api/v1/pwned/range/${prefix}`);
-                if (!res.ok) throw new Error();
-                const text = await res.text();
+                const response = await api.get<string>(`/pwned/range/${prefix}`, {
+                    responseType: 'text'
+                });
+            
+                const text = response.data;
                 const lines = text.split('\n');
                 
                 let count = 0;

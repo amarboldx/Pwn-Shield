@@ -3,6 +3,7 @@ import { useVault } from './context/VaultAuthContext';
 import { VaultAuthGate } from './features/auth/component/VaultAuthGate';
 import CheckerForm from './features/pwned-checker/components/CheckerForm';
 import CsvBulkChecker from './features/pwned-checker/components/CsvBulkChecker';
+import { VaultDashboard } from './features/vault/component/VaultDashboard';
 
 type LoggedInTab = 'VAULT' | 'RADAR';
 type RadarSubMode = 'SINGLE' | 'BULK';
@@ -153,13 +154,7 @@ export default function App() {
                         )
                     ) : (
                         activeTab === 'VAULT' ? (
-                            <div style={{ textAlign: 'center', padding: '64px 20px', border: '2px dashed var(--pg-slate-200)', borderRadius: '16px', background: 'var(--pg-brand-white)' }}>
-                                <span style={{ fontSize: '32px' }}>🗝️</span>
-                                <h2 style={{ fontSize: 'var(--font-h1)', margin: '12px 0 4px 0', color: 'var(--pg-slate-900)' }}>Decrypted Sanctuary Active</h2>
-                                <p style={{ fontSize: 'var(--font-micro)', color: 'var(--pg-safe-text)', fontWeight: 600, margin: 0 }}>
-                                    Key B floating safely in RAM. (VaultDashboard.tsx rendering next)
-                                </p>
-                            </div>
+                            <VaultDashboard />
                         ) : (
                             <div style={{ background: 'var(--pg-brand-white)', borderRadius: '16px', border: '1px solid var(--pg-slate-200)', boxShadow: 'var(--pg-shadow-card)', padding: '28px' }}>
                                 {radarMode === 'SINGLE' ? <CheckerForm /> : <CsvBulkChecker />}

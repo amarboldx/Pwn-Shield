@@ -85,28 +85,32 @@ export const VaultAuthProvider = ({ children }: { children: ReactNode }) => {
    * SIGNUP
    */
   const signup = async (email: string, masterPass: string) => {
-    setIsLoading(true);
-    setAuthError(null);
-    try {
-      // 1. Ask server for a real signup salt
-      const saltRes = await api.get(`/auth/salt?email=${encodeURIComponent(email)}`);
-      const salt = saltRes.data.salt;
+      setIsLoading(true);
+      setAuthError(null);
+      try {
+        // 1. Generate 32-character hex salt locally
+        const array = new Uint8Array(16);
+        window.crypto.getRandomValues(array);
+        const localSalt = Array.from(array).map(b => b.toString(16).padStart(2, '0')).join('');
 
-      const keys = await deriveMasterKeys(masterPass, salt);
-      const keyAHex = keys.authKeyHex;
-      const derivedKeyB = keys.vaultCryptoKey;
+        // 2. Derive keys using this specific salt
+        const keys = await deriveMasterKeys(masterPass, localSalt);
+        
+        // 3. Send to server
+        await api.post('/auth/signup', { 
+          email, 
+          authKeyHex: keys.authKeyHex, 
+          cryptoSalt: localSalt 
+        });
 
-      await api.post('/auth/signup', { email, authKeyHex: keyAHex });
-
-      setKeyB(derivedKeyB);
-      await unboxVault(derivedKeyB);
-
-    } catch (err: any) {
-      setAuthError(err.response?.data || "Identity registration failed.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+        setKeyB(keys.vaultCryptoKey);
+        await unboxVault(keys.vaultCryptoKey);
+      } catch (err: any) {
+        setAuthError(err.response?.data || "Signup failed.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
   /**
    * PUSH UPDATED VAULT TO POSTGRESQL

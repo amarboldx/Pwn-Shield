@@ -37,7 +37,7 @@ export const VaultAuthGate: React.FC = () => {
         await signup(email, masterPassword);
       }
     } catch (err) {
-      // Caught globally by context authError
+      console.error("Login attempt failed", err);
     }
   };
 
