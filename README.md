@@ -38,12 +38,16 @@ graph LR
 * [x] **Anti-Warp Viewport:** CSS-locked multi-column matrix with native hover tooltips and dual scroll controls.
 
 ### Phase 2: The Zero-Knowledge Vault `[🟡 IN PROGRESS]`
-* [ ] **PostgreSQL Infrastructure:** Schema provisioning for encrypted user blobs and synchronization metadata.
-* [ ] **Argon2id Key Derivation:** Client-side stretching of Master Passwords to derive dual `Auth` and `Vault` keys.
+* [x] **PostgreSQL Infrastructure:** Schema provisioning for encrypted user blobs and synchronization metadata.
+* [x] **Argon2id Key Derivation:** Client-side stretching of Master Passwords to derive dual `Auth` and `Vault` keys.
 * [x] **AES-256-GCM Cryptography:** Local encryption/decryption of credential payloads before network transit.
 * [x] **Stateless Broker Auth:** Spring Security JWT implementation validated against stretched authentication hashes.
 * [x] **Blob Synchronization Engine:** Delta-sync API endpoints (`/api/v1/vault/sync`) for cloud state resolution.
-* [ ] **Vault Dashboard UI:** Secure CRUD interface for adding, generating, and organizing encrypted credentials.
+* [x] **Vault Dashboard UI:** Secure CRUD interface for adding, generating, and organizing encrypted credentials.
+* [x] **Automatic Password Leak Detection**
+* [x] **Automatic Clipboard Scrubbing**
+* [ ] **Chrome Extension for password autofill**
+* [ ] **Detailed Password Organization**
 
 ### Phase 3: Native Mobile Clients `[⚪ PLANNED]`
 * [ ] **Native Kotlin Android App:** Jetpack Compose UI utilizing the decoupled `core/crypto` logic.
